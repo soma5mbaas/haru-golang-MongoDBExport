@@ -46,7 +46,7 @@ func main() {
 	defer logger.DropLogger()
 
 	mongodb := config.MONGODB_HOST + ":" + config.MONGODB_PORT
-	session, err := mgo.Dial(mongodb)
+	session, Mongoerr := mgo.Dial(mongodb)
 	if Mongoerr != nil {
 		panic(Mongoerr)
 	}
@@ -54,7 +54,7 @@ func main() {
 
 	//connect to RabbitMQ
 	rabbitmq := "amqp://" + config.RABBITMQ_USER + ":" + config.RABBITMQ_PASS + "@" + config.RABBITMQ_HOST + ":" + config.RABBITMQ_PORT
-	conn, err := amqp.Dial(rabbitmq)
+	conn, MQerr := amqp.Dial(rabbitmq)
 	if MQerr != nil {
 		panic(MQerr)
 	}
