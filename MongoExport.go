@@ -88,7 +88,7 @@ func main() {
 		}
 		CollectionName := m.Collection
 		//MongoDB set
-		c := session.DB("haru").C(CollectionName)
+		c := session.DB(config.NAMESPACE + "haru").C(CollectionName)
 		var file *os.File
 		var Openerr error
 		file, Openerr = os.OpenFile(CollectionName+".json", os.O_WRONLY|os.O_CREATE, 0640)
